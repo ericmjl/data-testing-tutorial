@@ -11,4 +11,5 @@ A short tutorial on how to do data testing.
 
 An uninformative section title, I will admit.
 
-`cd` into `.git`, then `cd` into `hooks`, and create a bash script named `test.sh` inside there. 
+`cd` into `.git`, then `cd` into `hooks`, and create a bash script named `test.sh` inside there, using: `pico test.sh`
+
