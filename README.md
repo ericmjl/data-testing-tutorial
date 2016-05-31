@@ -11,7 +11,7 @@ A short tutorial on how to do data testing.
 # Authors
 
 - Renee Chu
-- Eric J. Ma
+- [Eric J. Ma](http://www.ericmajinglong.com)
 
 # Credits
 
