@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="css/dtt.css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/dtt.css"></link>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"></link>
 
 # Why Data Testing
 
