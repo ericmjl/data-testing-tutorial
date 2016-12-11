@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/book.css"></link>
+<link rel="stylesheet" type="text/css" href="book.css"></link>
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"></link>
 
