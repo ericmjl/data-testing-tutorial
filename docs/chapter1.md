@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="css/dtt.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-
 # Why Data Testing
 
 With every line of code that we write, we make assumptions about them.
