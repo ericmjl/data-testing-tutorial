@@ -14,5 +14,5 @@ for f in files:
     os.system('pandoc {0}.md -s -H book.css -o {0}.html'.format(f))
 
 os.system('git add .')
-os.system('git commit -m "rebuilt pages"')
+os.system('git commit -m "updated pages"')
 os.system('git push')
