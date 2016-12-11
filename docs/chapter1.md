@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="book.css">
+
 # Why Data Testing
 
 With every line of code that we write, we make assumptions about them.
