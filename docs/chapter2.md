@@ -1,4 +1,4 @@
-# Part 2: Introduction to Testing & Writing Tests for Functions(30 min)
+# Part 2: Introduction to Testing & Writing Tests for Functions
 
 Summary of section: Introduction to py.test as a simple way to get off the ground with automated testing.
 

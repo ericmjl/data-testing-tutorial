@@ -1,4 +1,4 @@
-# Part 5: Code coverage (20 min)
+# Part 5: Code coverage
 
 Summary of section: use of `coverage.py` to check code coverage.
 

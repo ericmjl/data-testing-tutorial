@@ -1,4 +1,4 @@
-# Part 6: Property-based testing (30 min)
+# Part 6: Property-based testing
 
 Summary of section: introduction to `hypothesis`.
 
