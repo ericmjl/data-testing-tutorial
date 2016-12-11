@@ -7,3 +7,11 @@ Summary of section: Introduction to py.test as a simple way to get off the groun
 1. Warm-up example: write an `add()` function, write a test for correctness, write a counter-example.
 1. More complex example: write a function that sums up two floating point numbers, and log10 transforms them. Write a test for correctness, write a counter-example.
 1. More complex example: write a function that strips punctuation and spaces and special characters from text, and transforms it into a "bag of words". Write test for correctness and counter-example test.
+
+# Running `py.test`
+
+Here's how you run `py.test` at the command line.
+
+```bash
+py.test
+```
