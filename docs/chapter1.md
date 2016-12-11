@@ -1,7 +1,3 @@
-<link rel="stylesheet" type="text/css" href="book.css"></link>
-
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"></link>
-
 # Why Data Testing
 
 With every line of code that we write, we make assumptions about them.
