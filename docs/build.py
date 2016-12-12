@@ -6,7 +6,6 @@ index = '\
 \n\
 ## Table of Contents\n\
 \n\
-1. [Index](./)\n\
 1. [Chapter 1 - Why Data Testing](./chapter1)\n\
 1. [Chapter 2 - Introduction to Testing & Writing Tests for Functions](./chapter2)\n\
 1. [Chapter 3 - Checking File Integrity](./chapter3)\n\
