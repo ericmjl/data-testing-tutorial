@@ -1,10 +1,5 @@
 # Part 2: Introduction to Testing & Writing Tests for Functions
 
-**navigation:** [previous chapter][previous] | [next chapter][next]
-
-[next]: ./chapter3
-[previous]: ./chapter1
-
 Summary of section: Introduction to py.test as a simple way to get off the ground with automated testing.
 
 1. Using py.test at the command line in an empty project directory.
