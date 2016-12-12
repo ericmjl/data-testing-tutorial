@@ -21,7 +21,7 @@ with open('index.md', 'w+') as f:
     f.write(index)
     for fname in files:
         if fname != 'index':
-            f.write('[{0}](./{0})\n'.format(fname))
+            f.write('1. [{0}](./{0})\n'.format(fname))
 
 
 for f in files:
