@@ -1,6 +1,6 @@
 # Part 2: Introduction to Testing & Writing Tests for Functions
 
-[previous chapter][previous] | [next chapter][next]
+**navigation:** [previous chapter][previous] | [next chapter][next]
 
 [next]: ./chapter3
 [previous]: ./chapter1
