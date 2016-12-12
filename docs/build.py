@@ -5,6 +5,14 @@ index = '\
 # Data Testing Tutorial\n\
 \n\
 ## Table of Contents\n\
+\n\
+1. [Index](./)\n\
+1. [Chapter 1 - Why Data Testing](./chapter1)\n\
+1. [Chapter 2 - Introduction to Testing & Writing Tests for Functions](./chapter2)\n\
+1. [Chapter 3 - Checking File Integrity](./chapter3)\n\
+1. [Chapter 4 - Checking Data Assumptions](./chapter4)\n\
+1. [Chapter 5 - Code coverage](./chapter5)\n\
+1. [Chapter 6 - Property-based testing](./chapter6)\n\
 '
 
 files = [
@@ -19,10 +27,6 @@ files = [
 
 with open('index.md', 'w+') as f:
     f.write(index)
-    for fname in files:
-        if fname != 'index':
-            f.write('1. [{0}](./{0})\n'.format(fname))
-
 
 for f in files:
     os.system('pandoc {0}.md -s -H book.css -o {0}.html'.format(f))
