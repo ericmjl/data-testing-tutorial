@@ -1,4 +1,6 @@
-# Why Data Testing
+**navigation:** [index](./) | [next chapter](./chapter2)
+
+# Part 1: Why Data Testing
 
 With every line of code that we write, we make assumptions about them.
 
