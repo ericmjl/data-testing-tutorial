@@ -1,4 +1,6 @@
-# Part 6: Property-based testing
+---
+title: Part 6 - Property-based testing
+---
 
 Summary of section: introduction to `hypothesis`.
 

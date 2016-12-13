@@ -1,4 +1,6 @@
-# Part 5: Code coverage
+---
+title: Part 5 - Code coverage
+---
 
 Summary of section: use of `coverage.py` to check code coverage.
 
