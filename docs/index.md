@@ -1,8 +1,10 @@
-# Data Testing Tutorial
+---
+title: Data Testing Tutorial
+---
 
 This is the book version of the data testing tutorial that I am creating.
 
-## Table of Contents
+# Table of Contents
 
 1. [Chapter 1 - Why Data Testing](./chapter1)
 1. [Chapter 2 - Introduction to Testing & Writing Tests for    Functions](./chapter2)
