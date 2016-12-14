@@ -2,6 +2,8 @@
 title: Part 5 - Code coverage
 ---
 
+**navigation:** [previous](./chapter4) | [next](./chapter6)
+
 Summary of section: use of `coverage.py` to check code coverage.
 
 1. Using coverage.py with py.test.

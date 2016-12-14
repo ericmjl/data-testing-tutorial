@@ -2,6 +2,9 @@
 title: Part 4 - Checking Data Assumptions
 ---
 
+**navigation:** [previous](./chapter3) | [next](./chapter5)
+
+
 Summary of section: Participants will write tests that check the assumptions that they may have about the data that they received. Applied to pre-data analysis, especially with streams of data coming in.
 
 1. Write tests for column data types: `int`, `float`, `str`, `object`.

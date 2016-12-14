@@ -2,6 +2,8 @@
 title: Part 3 - Checking File Integrity
 ---
 
+**navigation:** [previous](./chapter2) | [next](./chapter4)
+
 Summary of section: Participants will write simple tests that automatically check integrity of their files. Also will learn how to create simple change logs of data. We will provide a directory of data for this. Applied to detecting file tampering.
 
 1. Getting hashes of a file (md5, sha256), write script to automatically record data hashes.

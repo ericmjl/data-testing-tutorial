@@ -2,6 +2,8 @@
 title: Part 6 - Property-based testing
 ---
 
+**navigation:** [previous](./chapter5)
+
 Summary of section: introduction to `hypothesis`.
 
 1. Property-based testing: we don't write fixed tests, but instead test the "properties" of a function (input data range, data type) for correctness.
