@@ -1,7 +1,7 @@
 ---
 title: Part 2 - Introduction to Testing & Writing Tests for Functions
 ---
-**navigation:** [previous](./chapter1) | [next](./chapter3)
+**navigation:** [previous](./chapter1) | [next](./chapter3) | [index](./)
 
 Summary of section: Introduction to py.test as a simple way to get off the ground with automated testing.
 

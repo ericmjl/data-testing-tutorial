@@ -2,7 +2,7 @@
 title: Part 4 - Checking Data Assumptions
 ---
 
-**navigation:** [previous](./chapter3) | [next](./chapter5)
+**navigation:** [previous](./chapter3) | [next](./chapter5) | [index](./)
 
 
 Summary of section: Participants will write tests that check the assumptions that they may have about the data that they received. Applied to pre-data analysis, especially with streams of data coming in.

@@ -2,7 +2,7 @@
 title: Part 1 - Why Data Testing
 ---
 
-**navigation:** [previous](./) | [next](./chapter2)
+**navigation:** [next](./chapter2) | [index](./)
 
 With every line of code that we write, we make assumptions about them.
 

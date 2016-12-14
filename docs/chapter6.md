@@ -2,7 +2,7 @@
 title: Part 6 - Property-based testing
 ---
 
-**navigation:** [previous](./chapter5)
+**navigation:** [previous](./chapter5) | [index](./)
 
 Summary of section: introduction to `hypothesis`.
 
