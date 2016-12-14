@@ -1,5 +1,7 @@
 # Data Testing Tutorial
 
+This is the book version of the data testing tutorial that I am creating.
+
 ## Table of Contents
 
 1. [Chapter 1 - Why Data Testing](./chapter1)

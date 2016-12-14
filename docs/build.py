@@ -4,6 +4,8 @@ import os
 index = '\
 # Data Testing Tutorial\n\
 \n\
+This is the book version of the data testing tutorial that I am creating.\n\
+\n\
 ## Table of Contents\n\
 \n\
 1. [Chapter 1 - Why Data Testing](./chapter1)\n\
