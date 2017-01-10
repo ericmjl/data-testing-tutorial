@@ -16,7 +16,7 @@ Like any good scientist, before you go on to analyze the data you have on hand, 
 
 1. **Data types.** Are your data categorical, ordinal, or continuous? If they are categorical or ordinal, are they encoded as strings or as integers? If they are continuous, is it continuous in terms of having a long list of integers, or continuous floating point numbers?
 1. **Data structure.** Do you have a set of definitions for what each column means?
-1. **Data completeness.** Are you expecting that every column of data that you have will have a value from each row?
+1. **Data completeness.** Are you expecting that every column of data that you have will have a value from each row? Are there particular data points (rows) that should be present?
 1. **Data integrity.** Do you have a stray comma present somewhere in a CSV file? Do you have a string present in a column that should only be comprised of floats?
 
 ## Things to check when writing code
