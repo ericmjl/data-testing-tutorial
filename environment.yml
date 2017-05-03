@@ -11,5 +11,6 @@ dependencies:
 - nxviz
 - hiveplot
 - jupyter
+- jupyterlab
 - missingno
 - pytest
