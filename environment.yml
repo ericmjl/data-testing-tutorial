@@ -1,0 +1,15 @@
+name: datatest  # Data Testing Tutorial
+channels: !!python/tuple
+- defaults
+- conda-forge
+- ericmjl
+dependencies:
+- matplotlib
+- scipy
+- numpy
+- python=3.6
+- nxviz
+- hiveplot
+- jupyter
+- missingno
+- pytest
