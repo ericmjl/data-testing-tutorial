@@ -14,3 +14,4 @@ dependencies:
 - jupyterlab
 - missingno
 - pytest
+- tinydb
