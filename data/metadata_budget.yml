@@ -1,0 +1,12 @@
+filename: boston_budget.csv
+columns:
+- "Fiscal Year"
+- "Service (Cabinet)"
+- "Department"
+- "Program #"
+- "Program"
+- "Expense Type"
+- "ACCT #"
+- "Expense Category (Account)"
+- "Fund"
+- "Amount"

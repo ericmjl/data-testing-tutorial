@@ -1,0 +1,21 @@
+filename: boston_ei.csv
+columns:
+- Year
+- Month
+- logan_passengers
+- logan_intl_flights
+- hotel_occup_rate
+- hotel_avg_daily_rate
+- total_jobs
+- unemp_rate
+- labor_force_part_rate
+- pipeline_unit
+- pipeline_total_dev_cost
+- pipeline_sqft
+- pipeline_const_jobs
+- foreclosure_pet
+- foreclosure_deeds
+- med_housing_price
+- housing_sales_vol
+- new_housing_const_permits
+- new-affordable_housing_permits
