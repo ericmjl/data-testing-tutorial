@@ -11,11 +11,13 @@ dependencies:
 - nxviz
 - hiveplot
 - jupyter
+- ipykernel
 - jupyterlab
 - missingno
 - pytest
 - tinydb
 - pyyaml
 - pandas-summary
+- rise
 - pip:
   - environment_kernels
