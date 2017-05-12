@@ -2,16 +2,30 @@
 
 A short tutorial on how to do data testing.
 
-# Requirements
+# Environment
 
-1. `python` 3.x and higher. It's time to move on!
-2. `pandas`
-3. `pytest`
+## Setup
+
+I recommend using the [Anaconda distribution](https://www.continuum.io/downloads) of Python. To get setup, create a `conda` environment based on the provided [`environment.yml`](./environment.yml) spec file. Run the following commands in your bash terminal.
+
+```bash
+$ conda env create -n environment.yml
+$ source activate datatest
+```
+
+## Checks
+
+To check whether the environment is correctly setup, run the `checkenv.py` script. It should print to your terminal in green text, `All packages found; environment checks passed.`. Otherwise, `conda` or `pip` install the necessary packages stated.
 
 # Authors
 
 - Renee Chu
-- [Eric J. Ma](http://www.ericmajinglong.com)
+- [Eric J. Ma](http://www.ericmjl.com)
+
+# Contributors
+
+- Matt Bachmann: @Bachmann1234
+- Hugo Bowne-Anderson: @hugobowne
 
 # Credits
 
