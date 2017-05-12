@@ -1,0 +1,12 @@
+filename: finaid-applications.csv
+columns:
+- timestamp
+- organization_type:
+    - University
+    - Industry
+    - Other
+    - Open Source Project
+    - Government
+- country_residence
+- country_citizenship
+- finaid_need

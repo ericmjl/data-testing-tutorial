@@ -1,4 +1,4 @@
-Timestamp,Organization Type,Country of Residence,Country of Citizenship,Please indicate your level of financial aid need:
+timestamp,organization_type,country_residence,country_citizenship,finaid_need
 2/9/2017 14:14:38,University,United States of America,United States of America,"Conference and Tutorial Fees Waived, Hotel Accommodations, Airline Ticket"
 2/9/2017 15:53:06,University,United States,United States,"Hotel Accommodations, Airline Ticket"
 2/13/2017 14:59:49,Industry,United States of America,Belarus,"Conference and Tutorial Fees Waived, Hotel Accommodations, Airline Ticket"
@@ -73,7 +73,7 @@ Timestamp,Organization Type,Country of Residence,Country of Citizenship,Please i
 4/17/2017 15:15:46,Open Source Project,India,India,"Conference and Tutorial Fees Waived, Hotel Accommodations, Airline Ticket"
 4/17/2017 22:51:41,Industry,Mexico,Mexico,Conference and Tutorial Fees Waived
 4/18/2017 2:23:34,University,United States of America,South Korea,"Conference and Tutorial Fees Waived, Hotel Accommodations"
-4/18/2017 21:32:55,University,United States of America ,United States of America ,"Conference and Tutorial Fees Waived, Hotel Accommodations"
+4/18/2017 21:32:55,University,United States of America,United States of America,"Conference and Tutorial Fees Waived, Hotel Accommodations"
 4/19/2017 13:31:35,Government,Argentina,Argentina,"Conference and Tutorial Fees Waived, Airline Ticket"
 4/19/2017 16:09:45,University,United States of America,Turkey,"Conference and Tutorial Fees Waived, Hotel Accommodations"
 4/19/2017 16:22:26,University,United States of America,Canada,"Conference and Tutorial Fees Waived, Hotel Accommodations, Airline Ticket"
