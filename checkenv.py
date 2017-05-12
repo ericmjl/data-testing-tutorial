@@ -14,7 +14,7 @@ def check_import(packagename):
 
 
 packages = ['missingno', 'pytest', 'pytest_cov', 'tinydb', 'yaml',
-            'pandas_summary', 'environment_kernels']
+            'pandas_summary', 'environment_kernels', 'hypothesis']
 
 try:
     for pkg in packages:
