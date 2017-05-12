@@ -1,7 +1,9 @@
 import string
 
+
 def increment(x):
-    return x + 1
+    return x - 1
+
 
 def strip_punctuation(text):
     exclude = string.punctuation
@@ -12,5 +14,3 @@ def bag_of_words(text):
     text = strip_punctuation(text)
     words = set(text.split(' '))
     return words
-
-
