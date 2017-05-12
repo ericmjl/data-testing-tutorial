@@ -1,6 +1,5 @@
 from colorama import Fore
 from pkgutil import iter_modules
-import yaml
 
 
 def check_import(packagename):
@@ -13,9 +12,6 @@ def check_import(packagename):
     else:
         return False
 
-
-with open('environment.yml', 'r+') as f:
-    spec = yaml.load(f)
 
 packages = ['missingno', 'pytest', 'pytest_cov', 'tinydb', 'yaml',
             'pandas_summary', 'environment_kernels']
