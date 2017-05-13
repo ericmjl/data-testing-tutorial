@@ -18,3 +18,7 @@
 
 - `Country of ...`: Mixed names for USA, Mexico; has `dfasd`
 - `Financial Aid Need`: Needs downstream processing.
+
+# boston_ei-corrupt
+
+- `labor_force_part_rate`: has one value encoded as a percentage > 1.0 (e.g. 0.56 encoded as 56.)
