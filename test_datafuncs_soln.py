@@ -94,6 +94,6 @@ def test_boston_ei():
 
 
 def test_standard_scaler(x):
-    std = standard_scaler(x)
+    std = dfn.standard_scaler(x)
     assert np.allclose(std.mean(), 0)
     assert np.allclose(std.std(), 1)
