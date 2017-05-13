@@ -13,7 +13,12 @@ I am assuming you are of the following type of coder:
 - You are a data analytics type, who knows how to read/write CSV files with Pandas, and do basic data manipulation (slicing, indexing rows + columns, using the `.apply()` function).
 - You are not necessarily a seasoned software developer who has experience running tests.
 - You are comfortable with operating in the Terminal environment.
-- You are comfortable with Python, and know the context manager syntax (`with ....`), assertions (`assert conditions1 == condition2`), file I/O (`with open(....) as f:...`), and list/dict/tuple comprehensions (`[a for a in container if condition(a)]`).
+- You are comfortable with Python, and know:
+    - the context manager syntax (`with ....`),
+    - assertions (`assert conditions1 == condition2`),
+    - file I/O (`with open(....) as f:...`),
+    - list/dict/tuple comprehensions (`[a for a in container if condition(a)]`),
+    - checking types & attributes (`isinstance(obj, type) or hasattr(obj, attr)`).
 - You have some rudimentary knowledge of `numpy`, particularly the the `array.min()`, `array.max()`, `array.mean()`, `array.std()`, and `numpy.allclose(a1, a2)` function calls.
 
 # Environment
