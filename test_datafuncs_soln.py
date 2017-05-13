@@ -91,14 +91,3 @@ def test_boston_ei():
                      'hotel_avg_daily_rate', 'unemp_rate']
     for col in zero_one_cols:
         check_data_range(df['labor_force_part_rate'])
-
-
-def test_data_range():
-    """
-    A bad example - specific cases are hard-coded. We may want to make this
-    the generalized case - pass in a dataframe and a column name.
-    """
-    df = pd.read_csv('data/boston_ei.csv')
-    col = 'labor_force_part_rate'  # hard code one condition per column
-    assert df[col].min() >= 0, "minimum value less than zero"
-    assert df[col].max() <= 1, "maximum value greater than zero"
