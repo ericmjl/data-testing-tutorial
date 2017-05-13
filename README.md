@@ -9,7 +9,7 @@ A short tutorial on how to do data testing.
 I recommend using the [Anaconda distribution](https://www.continuum.io/downloads) of Python. To get setup, create a `conda` environment based on the provided [`environment.yml`](./environment.yml) spec file. Run the following commands in your bash terminal.
 
 ```bash
-$ conda env create -n environment.yml
+$ conda env create -f environment.yml
 $ source activate datatest
 ```
 
