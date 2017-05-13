@@ -6,6 +6,7 @@ import numpy as np
 import pytest
 import pandas as pd
 import yaml
+from pandas_summary import DataFrameSummary
 
 
 def test_increment():
@@ -58,11 +59,38 @@ def read_metadata(handle):
         return yaml.load(metadata_str)
 
 
-def test_data_columns():
-    metadata = read_metadata('data/metadata_budget.yml')
-    df = pd.read_csv('data/boston_budget.csv')
+def check_schema(df, meta_columns):
     for col in df.columns:
-        assert col in metadata['columns'], f'"{col}" not on metadata spec.'
+        assert col in meta_columns, f'"{col}" not in metadata column spec'
+
+
+def test_budget_schemas():
+    columns = read_metadata('data/metadata_budget.yml')['columns']
+    df = pd.read_csv('data/boston_budget.csv')
+
+    check_schema(df, columns)
+
+
+def check_data_completeness(df):
+
+    df_summary = DataFrameSummary(df).summary()
+    for col in df_summary.columns:
+        assert df_summary.loc['missing', col] == 0, f'{col} has missing values'
+
+
+def check_data_range(data, lower=0, upper=1):
+    assert data.min() >= lower, f"minimum value less than {lower}"
+    assert data.max() <= upper, f"maximum value greater than {upper}"
+
+
+def test_boston_ei():
+    df = pd.read_csv('data/boston_ei.csv')
+    check_data_completeness(df)
+
+    zero_one_cols = ['labor_force_part_rate', 'hotel_occup_rate',
+                     'hotel_avg_daily_rate', 'unemp_rate']
+    for col in zero_one_cols:
+        check_data_range(df['labor_force_part_rate'])
 
 
 def test_data_range():
