@@ -42,6 +42,9 @@ It should print to your terminal in green text, `All packages found; environment
 
 - Matt Bachmann: @Bachmann1234
 - Hugo Bowne-Anderson: @hugobowne
+- Boston Python tutorial students:
+    - @races1986
+    - Thao Nguyen: @ThaoNguyen15
 
 # Credits
 

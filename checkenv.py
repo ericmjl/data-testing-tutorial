@@ -23,4 +23,4 @@ try:
 except AssertionError:
     print(Fore.RED + f"{pkg} cannot be found. Please pip or conda install.")
 
-Style.RESET_ALL
+print(Style.RESET_ALL)
