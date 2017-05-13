@@ -28,3 +28,7 @@ def min_max_scaler(x):
         return np.array([0.5] * len(x))
     else:
         return (x - x.min()) / (x.max() - x.min())
+
+
+def standard_scaler(x):
+    return (x - x.mean()) / x.std()
