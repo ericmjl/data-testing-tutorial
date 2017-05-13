@@ -1,0 +1,12 @@
+colorama
+jupyter
+ipykernel
+jupyterlab
+pytest
+pytest-cov
+tinydb
+pyyaml
+pandas-summary
+missingno
+rise
+environment_kernels
