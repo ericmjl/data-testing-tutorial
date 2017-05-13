@@ -1,4 +1,4 @@
-from colorama import Fore
+from colorama import Fore, Style
 from pkgutil import iter_modules
 
 
@@ -22,3 +22,5 @@ try:
     print(Fore.GREEN + 'All packages found; environment checks passed.')
 except AssertionError:
     print(Fore.RED + f"{pkg} cannot be found. Please pip or conda install.")
+
+Style.RESET_ALL
