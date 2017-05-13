@@ -13,8 +13,9 @@ def check_import(packagename):
         return False
 
 
-packages = ['missingno', 'pytest', 'pytest_cov', 'tinydb', 'yaml',
-            'pandas_summary', 'environment_kernels', 'hypothesis']
+packages = ['colorama', 'jupyter', 'ipykernel', 'jupyterlab', 'pytest',
+            'pytest_cov', 'tinydb', 'yaml', 'pandas_summary', 'missingno',
+            'rise', 'environment_kernels']
 
 try:
     for pkg in packages:
