@@ -23,7 +23,7 @@ I am assuming you are of the following type of coder:
 
 # Environment
 
-## `conda` Setup
+## `conda` setup
 
 I recommend using the [Anaconda distribution](https://www.continuum.io/downloads) of Python. This is best supported for Mac OS X and Linux-based systems.
 
