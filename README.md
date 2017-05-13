@@ -4,7 +4,7 @@ A short tutorial on how to do data testing.
 
 # How to use this repository
 
-I suggest having the notebooks open **inside your browser**. Most of what we will do actually involves the Terminal and your favourite plain text editor.
+I suggest having the notebooks open **through GitHub inside your browser**. The Jupyter notebooks are mostly a presentation tool; iterative prototyping can be done using the IPython shell or Python interpreter. Almost all of what we will do involves the Terminal and your favourite plain text editor.
 
 # Pre-Requisite Knowledge
 
