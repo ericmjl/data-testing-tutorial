@@ -2,13 +2,14 @@
 title: Data Testing Tutorial
 ---
 
-This is the book version of the data testing tutorial that I am creating.
+This contains static HTML versions of the Jupyter notebooks that I have made for this tutorial.
 
-# Table of Contents
+Files:
 
-1. [Chapter 1 - Why Data Testing](./chapter1)
-1. [Chapter 2 - Introduction to Testing & Writing Tests for    Functions](./chapter2)
-1. [Chapter 3 - Checking File Integrity](./chapter3)
-1. [Chapter 4 - Checking Data Assumptions](./chapter4)
-1. [Chapter 5 - Code coverage](./chapter5)
-1. [Chapter 6 - Property-based testing](./chapter6)
+- [1-motivation.html](1-motivation.html)
+- [2-pytest-introduction.html](2-pytest-introduction.html)
+- [3-data-checks.html](3-data-checks.html)
+- [bonus-1-test-coverage.html](bonus-1-test-coverage.html)
+- [bonus-2-property-based-testing.html](bonus-2-property-based-testing.html)
+- [bonus-3-file-integrity.html](bonus-3-file-integrity.html)
+- [bonus-4-projects.html](bonus-4-projects.html)

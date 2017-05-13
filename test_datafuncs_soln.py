@@ -1,6 +1,6 @@
 import datafuncs_soln as dfn
 import string
-from hypothesis import given
+from hypothesis import given, assume
 from hypothesis import strategies as st
 import numpy as np
 import pytest
@@ -93,7 +93,27 @@ def test_boston_ei():
         check_data_range(df['labor_force_part_rate'])
 
 
-def test_standard_scaler(x):
+def test_standard_scaler():
+    x = np.arange(10)
     std = dfn.standard_scaler(x)
     assert np.allclose(std.mean(), 0)
     assert np.allclose(std.std(), 1)
+
+
+def test_clip():
+    data = np.arange(10)
+    arr = dfn.clip(data, 2, 8)
+    assert arr.min() == 2
+    assert arr.max() == 8
+    assert len(arr) == len(data)
+
+
+@given(st.integers(), st.integers(), st.integers())
+def test_eq_roots(a, b, c):
+    coefficients = (a, b, c)
+    # assumption here can mirror the assertion in
+    # the original function definition
+    discriminant = b**2 - 4*a*c
+    assume(discriminant >= 0)
+    r1, r2 = dfn.eq_roots(coefficients)
+    assert r1 >= r2
