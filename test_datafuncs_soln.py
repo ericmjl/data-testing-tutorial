@@ -79,8 +79,8 @@ def check_data_completeness(df):
 
 
 def check_data_range(data, lower=0, upper=1):
-    assert data.min() >= lower, f"minimum value less than {lower}"
-    assert data.max() <= upper, f"maximum value greater than {upper}"
+    assert min(data) >= lower, f"minimum value less than {lower}"
+    assert max(data) <= upper, f"maximum value greater than {upper}"
 
 
 def test_boston_ei():
@@ -91,3 +91,9 @@ def test_boston_ei():
                      'hotel_avg_daily_rate', 'unemp_rate']
     for col in zero_one_cols:
         check_data_range(df['labor_force_part_rate'])
+
+
+def test_standard_scaler(x):
+    std = standard_scaler(x)
+    assert np.allclose(std.mean(), 0)
+    assert np.allclose(std.std(), 1)
