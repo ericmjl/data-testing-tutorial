@@ -10,7 +10,7 @@ Before beginning, start with the README to get a flavour of what you'll need to 
 
 After that, work through Notebooks 1-3 in order first. Bonus notebooks 1-3 are intended for you to explore at your own pace. Bonus notebook 4 contains projects that can be attempted at your free time to gain practice with testing.
 
-# Table of Contents:
+# Table of Contents
 
 - [README](readme.html)
 - [Notebook 1: Introduction](1-introduction.html)
