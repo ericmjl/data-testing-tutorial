@@ -1,12 +1,13 @@
 import datafuncs_soln as dfn
 import string
-from hypothesis import given, assume
-from hypothesis import strategies as st
 import numpy as np
 import pytest
 import pandas as pd
 import yaml
 from pandas_summary import DataFrameSummary
+from hypothesis import given, assume
+from hypothesis import strategies as st
+from tinydb import TinyDB, Query
 
 
 def test_increment():
@@ -115,5 +116,26 @@ def test_eq_roots(a, b, c):
     # the original function definition
     discriminant = b**2 - 4*a*c
     assume(discriminant >= 0)
+    assume(a > 0)
     r1, r2 = dfn.eq_roots(coefficients)
     assert r1 >= r2
+
+
+def test_divvy_corrupt():
+    hash_true = dfn.hash_data('data/Divvy_Stations_2013.csv')
+    hash_corr = dfn.hash_data('data/Divvy_Stations_2013_corrupt.csv')
+
+    for i in range(len(hash_true)):
+        true = hash_true.loc[i, 'hash']
+        corr = hash_corr.loc[i, 'hash']
+
+        assert true == corr, print(f"Row {i} has a problem.")
+
+
+def test_divvy_filehash():
+    db = TinyDB('data_integrity/hashes.db')
+    filename = f'data/Divvy_Stations_2013.csv'
+    filehash = dfn.hash_file(filename)
+    Rec = Query()
+    latest_record = db.search(Rec.filename == filename)[-1]
+    assert latest_record['hash'] == filehash
