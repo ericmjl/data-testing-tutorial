@@ -12058,16 +12058,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="YAML-Files">YAML Files<a class="anchor-link" href="#YAML-Files">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Describe data in a human-friendly &amp; computer-readable format.</p>
+<h2 id="YAML-Files">YAML Files<a class="anchor-link" href="#YAML-Files">&#182;</a></h2><p>Describe data in a human-friendly &amp; computer-readable format. The <code>environment.yml</code> file in your downloaded repository is also a YAML file, by the way!</p>
 
 </div>
 </div>
@@ -12121,7 +12112,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -12147,7 +12138,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">yaml</span>
@@ -12164,7 +12155,7 @@ div#notebook {
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -12182,6 +12173,48 @@ div#notebook {
  &#39;filename&#39;: &#39;boston_budget.csv&#39;}</pre>
 </div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can also take dictionaries, and return YAML-formatted text.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metadata</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>columns: [Fiscal Year, Service (Cabinet), Department, &#39;Program #&#39;, Program, Expense
+    Type, &#39;ACCT #&#39;, Expense Category (Account), Fund, Amount]
+filename: boston_budget.csv
+
+</pre>
+</div>
 </div>
 
 </div>
@@ -12328,7 +12361,26 @@ test_datafuncs_soln.py:63: <span class="nv">AssertionError</span>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bonus-Exercise:-Write-meta-test-(optional)">Bonus Exercise: Write meta-test (optional)<a class="anchor-link" href="#Bonus-Exercise:-Write-meta-test-(optional)">&#182;</a></h2><p>Now, let's go "meta". Write a "meta-test" that ensures that every CSV file in the <code>data/</code> directory has a schema file associated with it. (The function need not check each schema.) Until we finish filling out the rest of the exercises, this test can be allowed to fail, and we can mark it as a test to skip by marking it with an <code>@skip</code> decorator:</p>
+<h2 id="Exercise:-Auto-YAML-Spec.">Exercise: Auto YAML Spec.<a class="anchor-link" href="#Exercise:-Auto-YAML-Spec.">&#182;</a></h2><p>Inside <code>datafuncs.py</code>, write a function with the signature <code>autospec(handle)</code> that takes in a file path, and does the following:</p>
+<ul>
+<li>Create a dictionary, with two keys:<ul>
+<li>a "filename" key, whose value only records the filename (and not the full file path),</li>
+<li>a "columns" key, whose value records the list of columns in the dataframe.</li>
+</ul>
+</li>
+<li>Converts the dictionary to a YAML string</li>
+<li>Writes the YAML string to disk.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Optional-Exercise:-Write-meta-test">Optional Exercise: Write meta-test<a class="anchor-link" href="#Optional-Exercise:-Write-meta-test">&#182;</a></h2><p>Now, let's go "meta". Write a "meta-test" that ensures that every CSV file in the <code>data/</code> directory has a schema file associated with it. (The function need not check each schema.) Until we finish filling out the rest of the exercises, this test can be allowed to fail, and we can mark it as a test to skip by marking it with an <code>@skip</code> decorator:</p>
 <div class="highlight"><pre><span></span><span class="nd">@pytest.mark.skip</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="s2">&quot;no way of currently testing this&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">test_my_func</span><span class="p">():</span>
     <span class="o">...</span>
@@ -12343,7 +12395,7 @@ test_datafuncs_soln.py:63: <span class="nv">AssertionError</span>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Notes">Notes<a class="anchor-link" href="#Notes">&#182;</a></h2><ul>
-<li>Point: have trusted copy of schema apart from data file. YAML not necessarily only way.</li>
+<li>The point here is to have a trusted copy of schema apart from data file. YAML not necessarily only way!</li>
 <li>If no schema provided, manually create one; this is exploratory data analysis anyways - no effort wasted!</li>
 </ul>
 
@@ -12363,7 +12415,7 @@ test_datafuncs_soln.py:63: <span class="nv">AssertionError</span>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -12384,7 +12436,7 @@ test_datafuncs_soln.py:63: <span class="nv">AssertionError</span>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -12526,7 +12578,7 @@ test_datafuncs_soln.py:63: <span class="nv">AssertionError</span>
       <td>237.890210</td>
       <td>0.0</td>
       <td>0.069</td>
-      <td>0.597</td>
+      <td>59.700</td>
       <td>122.0</td>
       <td>222200000.0</td>
       <td>457374.0</td>

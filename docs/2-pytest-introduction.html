@@ -11780,6 +11780,15 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="py.test"><code>py.test</code><a class="anchor-link" href="#py.test">&#182;</a></h1><blockquote><p>The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.</p>
 </blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Features:</p>
 <ul>
 <li>All tests are pre-fixed with <code>test_</code>.</li>
@@ -11995,6 +12004,19 @@ test_datafuncs.py .
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What's-going-on?!">What's going on?!<a class="anchor-link" href="#What's-going-on?!">&#182;</a></h1><ul>
+<li><code>py.test</code> recursively searches for all files and functions with the prefix <code>test_</code>.</li>
+<li><strong>Testing for Humans!</strong></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h2><p>Now, if the function changes (say, by accident), you can find out by running the test suite.</p>
 <p>Actually, let's make that change. Make any modification to the <code>increment()</code> function that causes the <code>test_increment()</code> function to fail, e.g. change the return statement to <code>return x</code>, or <code>return x-1</code>. Then, re-run the tests using the <code>py.test</code> command.</p>
 <p>Finally, fix the function and confirm that the tests pass.</p>
@@ -12022,7 +12044,7 @@ test_datafuncs.py .
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And now, the testing loop:</p>
+<h2 id="Testing-Loop">Testing Loop<a class="anchor-link" href="#Testing-Loop">&#182;</a></h2><p>And now, the testing loop:</p>
 <ol>
 <li>Write a test for a function.</li>
 <li>Write the function.</li>

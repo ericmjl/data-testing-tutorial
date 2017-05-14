@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Testing Tutorial</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="ss" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Data Testing Tutorial</h1>
+</div>
+<p>This contains static HTML versions of the Jupyter notebooks that I have made for this tutorial.</p>
+<p>Files:</p>
+<ul>
+<li><a href="1-motivation.html">Notebook 1: Motivation</a></li>
+<li><a href="2-pytest-introduction.html">Notebook 2: Introduction to <code>pytest</code></a></li>
+<li><a href="3-data-checks.html">Notebook 3: Data Checks</a></li>
+<li><a href="bonus-1-test-coverage.html">Bonus Notebook 1: Test Coverage</a></li>
+<li><a href="bonus-2-property-based-testing.html">Bonus Notebook 2: Property Based Testing</a></li>
+<li><a href="bonus-3-file-integrity.html">Bonus Notebook 3: File Integrity</a></li>
+<li><a href="bonus-4-projects.html">Bonus Notebook 4: Projects</a></li>
+</ul>
+<p>/<em> </em> I add this to html files generated with pandoc. */</p>
+<p>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }</p>
+<p>body { color: #444; font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.7; padding: 1em; margin: auto; max-width: 42em; background: #fefefe; }</p>
+<p>a { color: #0645ad; text-decoration: none; }</p>
+<p>a:visited { color: #0b0080; }</p>
+<p>a:hover { color: #06e; }</p>
+<p>a:active { color: #faa700; }</p>
+<p>a:focus { outline: thin dotted; }</p>
+<p>*::-moz-selection { background: rgba(255, 255, 0, 0.3); color: #000; }</p>
+<p>*::selection { background: rgba(255, 255, 0, 0.3); color: #000; }</p>
+<p>a::-moz-selection { background: rgba(255, 255, 0, 0.3); color: #0645ad; }</p>
+<p>a::selection { background: rgba(255, 255, 0, 0.3); color: #0645ad; }</p>
+<p>p { margin: 1em 0; }</p>
+<p>img { max-width: 100%; }</p>
+<p>h1, h2, h3, h4, h5, h6 { color: #111; line-height: 125%; margin-top: 2em; font-weight: normal; }</p>
+<p>h4, h5, h6 { font-weight: bold; }</p>
+<p>h1 { font-size: 2.5em; }</p>
+<p>h2 { font-size: 2em; }</p>
+<p>h3 { font-size: 1.5em; }</p>
+<p>h4 { font-size: 1.2em; }</p>
+<p>h5 { font-size: 1em; }</p>
+<p>h6 { font-size: 0.9em; }</p>
+<p>blockquote { color: #666666; margin: 0; padding-left: 3em; border-left: 0.5em #EEE solid; }</p>
+<p>hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa; border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }</p>
+<p>pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }</p>
+<p>pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }</p>
+<p>b, strong { font-weight: bold; }</p>
+<p>dfn { font-style: italic; }</p>
+<p>ins { background: #ff9; color: #000; text-decoration: none; }</p>
+<p>mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }</p>
+<p>sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }</p>
+<p>sup { top: -0.5em; }</p>
+<p>sub { bottom: -0.25em; }</p>
+<p>ul, ol { margin: 1em 0; padding: 0 0 0 2em; }</p>
+<p>li p:last-child { margin-bottom: 0; }</p>
+<p>ul ul, ol ol { margin: .3em 0; }</p>
+<p>dl { margin-bottom: 1em; }</p>
+<p>dt { font-weight: bold; margin-bottom: .8em; }</p>
+<p>dd { margin: 0 0 .8em 2em; }</p>
+<p>dd:last-child { margin-bottom: 0; }</p>
+<p>img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }</p>
+<p>figure { display: block; text-align: center; margin: 1em 0; }</p>
+<p>figure img { border: none; margin: 0 auto; }</p>
+<p>figcaption { font-size: 0.8em; font-style: italic; margin: 0 0 .8em; }</p>
+<p>table { margin-bottom: 2em; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; border-spacing: 0; border-collapse: collapse; }</p>
+<p>table th { padding: .2em 1em; background-color: #eee; border-top: 1px solid #ddd; border-left: 1px solid #ddd; }</p>
+<p>table td { padding: .2em 1em; border-top: 1px solid #ddd; border-left: 1px solid #ddd; vertical-align: top; }</p>
+<p>.author { font-size: 1.2em; text-align: center; }</p>
+<p><span class="citation">@media</span> only screen and (min-width: 480px) { body { font-size: 14px; } } <span class="citation">@media</span> only screen and (min-width: 768px) { body { font-size: 16px; } } <span class="citation">@media</span> print { * { background: transparent !important; color: black !important; filter: none !important; -ms-filter: none !important; }</p>
+<p>body { font-size: 12pt; max-width: 100%; }</p>
+<p>a, a:visited { text-decoration: underline; }</p>
+<p>hr { height: 1px; border: 0; border-bottom: 1px solid black; }</p>
+<p>a[href]:after { content: &quot; (&quot; attr(href) &quot;)&quot;; }</p>
+<p>abbr[title]:after { content: &quot; (&quot; attr(title) &quot;)&quot;; }</p>
+<p>.ir a:after, a[href^=&quot;javascript:&quot;]:after, a[href^=&quot;#&quot;]:after { content: &quot;&quot;; }</p>
+<p>pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }</p>
+<p>tr, img { page-break-inside: avoid; }</p>
+<p>img { max-width: 100% !important; }</p>
+<p><span class="citation">@page</span> :left { margin: 15mm 20mm 15mm 10mm; }</p>
+<p><span class="citation">@page</span> :right { margin: 15mm 10mm 15mm 20mm; }</p>
+<p>p, h2, h3 { orphans: 3; widows: 3; }</p>
+<p>h2, h3 { page-break-after: avoid; } }</p>
+</body>
+</html>

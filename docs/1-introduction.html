@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>bonus-2-property-based-testing</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>1-introduction</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11778,21 +11778,48 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Property-based-testing">Property-based testing<a class="anchor-link" href="#Property-based-testing">&#182;</a></h1><p>From the <a href="">Hypothesis</a> docs:</p>
-<blockquote><p>It works by letting you write tests that assert that something should be true for every case, <strong>not just the ones you happen to think of.</strong></p>
-<p>Think of a normal unit test as being something like the following:</p>
-<ol>
-<li>Set up some data.</li>
-<li>Perform some operations on the data.</li>
-<li>Assert something about the result.</li>
-</ol>
-<p>Hypothesis lets you write tests which instead look like this:</p>
-<ol>
-<li>For all data matching some specification.</li>
-<li>Perform some operations on the data.</li>
-<li>Assert something about the result.</li>
-</ol>
-<p>This is often called property based testing, and was popularised by the Haskell library Quickcheck.</p>
+<h1 id="Best-Data-Testing-Practices-for-Data-Science">Best Data Testing Practices for Data Science<a class="anchor-link" href="#Best-Data-Testing-Practices-for-Data-Science">&#182;</a></h1><p>Eric J. Ma</p>
+<p>MIT Biological Engineering</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="How-to-use-these-notebooks">How to use these notebooks<a class="anchor-link" href="#How-to-use-these-notebooks">&#182;</a></h1><ul>
+<li>Follow along with Jupyter notebooks in GitHub: <a href="https://github.com/ericmjl/data-testing-tutorial">ericmjl/data-testing-tutorial</a></li>
+<li>Most of what we will do is in the terminal &amp; your favourite text editor.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Why-tests?">Why tests?<a class="anchor-link" href="#Why-tests?">&#182;</a></h1><ul>
+<li>We make assumptions about our code &amp; data. </li>
+<li>There are cases where those assumptions are violated.</li>
+<li>Therefore, automated testing of those assumptions is important.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Tests:-A-Definition">Tests: A Definition<a class="anchor-link" href="#Tests:-A-Definition">&#182;</a></h1><blockquote><p>A contract between your current self and your future self.
+What you expect to be right now should hold true in the future.
+What you expect to be wrong now should still be wrong in the future.
+Unless the requirements have changed!</p>
 </blockquote>
 
 </div>
@@ -11803,61 +11830,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>Here's an example with a standard test. Note how we've only tested a single value here.</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="k">def</span> <span class="nf">test_increment</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># We&#39;ve only tested one value here.</span>
-    <span class="k">assert</span> <span class="n">increment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">x</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's modify this test with a "property-based" test. In this case, we may choose to test it with a bunch of integers sampled using Hypothesis' <code>strategies</code> module.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
-<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
-
-<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">())</span>  <span class="c1"># We are going to test a wide range of integers.</span>
-<span class="k">def</span> <span class="nf">test_increment</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="n">increment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">x</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h2><p>Take a challenge here: where possible (and using the Hypothesis documentation to help you), create "property-based" versions of one or more other functions in your <code>datafuncs.py</code> module.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Encoding-Assumptions">Encoding Assumptions<a class="anchor-link" href="#Encoding-Assumptions">&#182;</a></h1><p>Your functions take in data and output other data. There may be assumptions implicit in your choice of data. Hypothesis can help you make these assumptions explicit as you iteratively build the test. Let's take the example where we're computing the roots of a quadratic equation.</p>
-<p>To help you recall, a quadratic equation is of the form:</p>
-$$ ax^2 + bx + c $$<p>The roots of the equation are given by the formula:</p>
-$$ \frac{-a \pm \sqrt{b^2 - 4ac}}{2a}$$<p>The discriminant $ D $ is the portion in the square root:</p>
-$$ \sqrt{b^2 - 4ac} $$<p>If:</p>
+<h1 id="Lets-discuss!">Lets discuss!<a class="anchor-link" href="#Lets-discuss!">&#182;</a></h1><p>What needs to be tested for:</p>
 <ul>
-<li>$ D > 0 $, the roots are real-valued.</li>
-<li>$ D = 0 $, both roots are real-valued and identical.</li>
-<li>$ D < 0 $, there are complex roots.</li>
+<li>code?</li>
+<li>data?</li>
+<li>statistics?</li>
 </ul>
-<p>We can thus write an <code>eq_roots(coefficients)</code> function that returns the non-complex roots of a polynomial equation. Given the requirements of the function definition, what would we expect of the function that can be encoded in a test? These expressions can be encoded in the <code>assume()</code> function from <code>hypothesis</code>.</p>
 
 </div>
 </div>
@@ -11867,7 +11845,12 @@ $$ \sqrt{b^2 - 4ac} $$<p>If:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h1><p>To get a feel for how to use the <code>assume()</code> function from hypothesis, uncomment the line indicated in the code block below, complete the <code>assume()</code> conditional, and copy/paste it to <code>test_datafuncs.py</code>.</p>
+<h2 id="For-code,-what-needs-to-be-tested?">For code, what needs to be tested?<a class="anchor-link" href="#For-code,-what-needs-to-be-tested?">&#182;</a></h2><ul>
+<li>Given some example input(s), the output is correct.</li>
+<li>Counter-examples should show up as incorrect.</li>
+<li>Boundary cases are accounted for using defensive programming.</li>
+<li>All lines of stable code are subject to at least one test.</li>
+</ul>
 
 </div>
 </div>
@@ -11877,19 +11860,12 @@ $$ \sqrt{b^2 - 4ac} $$<p>If:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="c1"># In test_datafuncs.py</span>
-<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">assume</span>
-
-<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">())</span>
-<span class="k">def</span> <span class="nf">test_eq_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="c1"># assumption here can mirror the assertion in</span>
-    <span class="c1"># the original function definition</span>
-    <span class="n">discriminant</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
-    <span class="c1"># Uncomment the following line.</span>
-    <span class="c1"># assume(discriminant...)</span>
-    <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">eq_roots</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">r1</span> <span class="o">&gt;=</span> <span class="n">r2</span>
-</pre></div>
+<h2 id="For-data,-what-needs-to-be-tested?">For data, what needs to be tested?<a class="anchor-link" href="#For-data,-what-needs-to-be-tested?">&#182;</a></h2><ul>
+<li>Data types are appropriate. (Types)</li>
+<li>Data has not been tampered with. (Integrity)</li>
+<li>Missing values are accounted for. (Completeness)</li>
+<li>Data schema is complete. (Structure)</li>
+</ul>
 
 </div>
 </div>
@@ -11899,7 +11875,11 @@ $$ \sqrt{b^2 - 4ac} $$<p>If:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now what's left is implementing the function. Implement the function, such that its signature is <code>eq_roots(coefficients)</code>, and returns two values, <code>root1, root2</code>.</p>
+<h2 id="For-statistical-analysis-&amp;-ML,-what-else-needs-to-be-done?">For statistical analysis &amp; ML, what else needs to be done?<a class="anchor-link" href="#For-statistical-analysis-&amp;-ML,-what-else-needs-to-be-done?">&#182;</a></h2><ul>
+<li>Underlying distributions for real-valued (numeric; integer or floats) data.</li>
+<li>Classifying data as categorical, ordinal, count, compositional, or continuous.</li>
+<li>Categorical/ordinal values represented as strings should be converted to numerical representations.</li>
+</ul>
 
 </div>
 </div>
@@ -11909,16 +11889,10 @@ $$ \sqrt{b^2 - 4ac} $$<p>If:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-
-<span class="k">def</span> <span class="nf">eq_roots</span><span class="p">(</span><span class="n">coefficients</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the non-complex roots of a quadratic equation.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="o">...</span>
-
-    <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
-</pre></div>
+<h2 id="What-you-can-expect">What you can expect<a class="anchor-link" href="#What-you-can-expect">&#182;</a></h2><h3 id="Coding">Coding<a class="anchor-link" href="#Coding">&#182;</a></h3><ul>
+<li>You'll be implementing only simple functions. Nothing complicated.</li>
+<li>Sample solutions are in the <code>*_soln.py</code> files.</li>
+</ul>
 
 </div>
 </div>
@@ -11928,25 +11902,71 @@ $$ \sqrt{b^2 - 4ac} $$<p>If:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, run pytest. Look out to see if Hypothesis finds out a few edge cases you didn't already think about!</p>
-<div class="highlight"><pre><span></span>$ py.test
-</pre></div>
+<h3 id="Tutorial-Material">Tutorial Material<a class="anchor-link" href="#Tutorial-Material">&#182;</a></h3><ul>
+<li>Covered with interspersed lectures.</li>
+<li>Simple exercises designed to get you familiar with how to write tests.</li>
+<li>Give you a set of tools + code to bootstrap testing for another project.</li>
+</ul>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bonus-Material">Bonus Material<a class="anchor-link" href="#Bonus-Material">&#182;</a></h3><ul>
+<li>Self-paced material for the final hour of the tutorial or at home.</li>
+<li>More complex topics on the topic of testing.<ul>
+<li>File integrity</li>
+<li>Test coverage</li>
+<li>Property-based tests</li>
+</ul>
+</li>
+<li>More superpowers for data testing!</li>
+</ul>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Take-Homes">Take-Homes<a class="anchor-link" href="#Take-Homes">&#182;</a></h1><ul>
+<li><strong>If anything, I want you to not be afraid to write a test.</strong> If that's all you take back, this tutorial can be deemed a success.</li>
+</ul>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Beyond this:<ul>
+<li>You'll get a ton of practice with <a href="https://docs.pytest.org/en/latest/"><code>pytest</code></a> and assertion statements.</li>
+<li>You'll will be left with self-paced learning material for <a href="https://hypothesis.readthedocs.io/en/latest/"><code>hypothesis</code></a> to do property-based testing.</li>
+<li>You will have a starter set of tools for writing tests for your code and data.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Let's-get-going!">Let's get going!<a class="anchor-link" href="#Let's-get-going!">&#182;</a></h1>
+</div>
+</div>
 </div>
     </div>
   </div>
