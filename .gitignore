@@ -1,6 +1,6 @@
 .ipynb_checkpoints/*
 .cache/
-__pycache__/
+__pycache__/*
 .coverage
 .hypothesis/*
 data_integrity/*
