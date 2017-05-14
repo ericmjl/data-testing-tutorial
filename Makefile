@@ -1,7 +1,13 @@
 NBS = $(wildcard *.ipynb)
 
-html: $(NBS)
+all: nbhtml index readme
+
+nbhtml: $(NBS)
 	jupyter nbconvert --to html $(NBS)
 	mv *.html docs/.
 
-	pandoc docs/index.md -o docs/index.html -css docs/book.css
+index: docs/index.md docs/book.css
+	pandoc docs/index.md -o docs/index.html -c book.css
+
+readme: README.md docs/book.css
+	pandoc README.md -o docs/readme.html -c book.css
