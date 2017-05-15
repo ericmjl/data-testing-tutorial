@@ -1,12 +1,16 @@
-# data-testing-tutorial
+# Best Testing Practices for Data Science
 
-A short tutorial on how to do data testing.
+A short tutorial for data scientists on how to write tests for your code and your data.
 
-# How to use this repository
+## How to use this repository
 
-I suggest having the notebooks open **through GitHub inside your browser**. The Jupyter notebooks are mostly a presentation tool; iterative prototyping can be done using the IPython shell or Python interpreter. Almost all of what we will do involves the Terminal and your favourite plain text editor.
+The tutorial notes are typed up in Jupyter notebooks, and static HTML versions are available under the [`docs`](./docs/) folder. For the non-bonus material, I suggest working through the notes in order. With the exception of the Projects, the bonus material can be tackled in any order.
 
-# Pre-Requisite Knowledge
+## Feedback
+
+If you've taken a version of this tutorial, please leave feedback [here](https://ericma1.typeform.com/to/Ua0LBs).
+
+## Pre-Requisite Knowledge
 
 I am assuming you are of the following type of coder:
 
@@ -21,7 +25,7 @@ I am assuming you are of the following type of coder:
     - checking types & attributes (`isinstance(obj, type) or hasattr(obj, attr)`).
 - You have some rudimentary knowledge of `numpy`, particularly the the `array.min()`, `array.max()`, `array.mean()`, `array.std()`, and `numpy.allclose(a1, a2)` function calls.
 
-# Environment
+# Environment Setup
 
 ## `conda` setup
 
@@ -54,11 +58,13 @@ It should print to your terminal in green text, `All packages found; environment
 
 # Authors
 
-- Renee Chu
 - [Eric J. Ma](http://www.ericmjl.com)
 
 # Contributors
 
+Special thanks goes to individuals who have contributed in ways big and small to the improvement of the material.
+
+- Renee Chu
 - Matt Bachmann: @Bachmann1234
 - Hugo Bowne-Anderson: @hugobowne
 - Boston Python tutorial attendees:
