@@ -66,6 +66,8 @@ It should print to your terminal in green text, `All packages found; environment
     - Thao Nguyen: @ThaoNguyen15
     - @ChrisMuir
 
-# Credits
+# Data Credits
 
 - [Divvy Data Set](https://www.divvybikes.com/data)
+- [Analyze Boston](https://data.boston.gov/)
+- Mia T. Lieberman for the sanitization dataset.
