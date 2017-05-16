@@ -14,7 +14,8 @@ dependencies:
 - tinydb
 - pyyaml
 - pandas-summary
-- missingno
-- rise
+- scipy
 - pip:
+  - missingno
+  - rise
   - environment_kernels
