@@ -1,5 +1,5 @@
 name: datatest  # Data Testing Tutorial
-channels: !!python/tuple
+channels:
 - defaults
 - conda-forge
 - ericmjl
@@ -14,7 +14,6 @@ dependencies:
 - tinydb
 - pyyaml
 - pandas-summary
-- missingno
-- rise
 - pip:
   - environment_kernels
+  - missingno
