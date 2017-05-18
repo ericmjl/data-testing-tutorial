@@ -20,8 +20,6 @@ packages = ['colorama', 'jupyter', 'ipykernel', 'jupyterlab', 'pytest',
 try:
     for pkg in packages:
         assert check_import(pkg)
-    print(Fore.GREEN + 'All packages found; environment checks passed.')
+    print('All packages found; environment checks passed.')
 except AssertionError:
-    print(Fore.RED + f"{pkg} cannot be found. Please pip or conda install.")
-
-print(Style.RESET_ALL)
+    print("{pkg} cannot be found. Please pip or conda install.".format(pkg=pkg))
