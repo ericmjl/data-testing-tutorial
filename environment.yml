@@ -5,7 +5,6 @@ channels:
 - ericmjl
 dependencies:
 - python=3.6
-- colorama
 - jupyter
 - ipykernel
 - jupyterlab
