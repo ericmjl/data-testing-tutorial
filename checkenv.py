@@ -1,6 +1,4 @@
-from colorama import Fore, Style
 from pkgutil import iter_modules
-
 
 def check_import(packagename):
     """
@@ -13,7 +11,7 @@ def check_import(packagename):
         return False
 
 
-packages = ['colorama', 'jupyter', 'ipykernel', 'jupyterlab', 'pytest',
+packages = ['jupyter', 'ipykernel', 'jupyterlab', 'pytest',
             'pytest_cov', 'tinydb', 'yaml', 'pandas_summary', 'missingno',
             'rise', 'environment_kernels']
 
