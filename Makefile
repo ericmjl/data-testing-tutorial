@@ -1,10 +1,23 @@
+DOCSDIR := docs
+DOCSIMGDIR := $(DOCSDIR)/images
 NBS = $(wildcard *.ipynb)
+# HTML := $(addprefix $(DOCSDIR)/, index.html)
+HTML = $(patsubst %.ipynb, %.html, $(NBS))
+HTMLDOCS = $(patsubst %.html, docs/%.html, $(HTML))
 
-all: nbhtml index readme
+all: $(DOCSDIR) $(DOCSIMGDIR) $(HTML) $(HTMLDOCS) index readme
 
-nbhtml: $(NBS)
-	jupyter nbconvert --to html $(NBS)
-	mv *.html docs/.
+
+$(DOCSDIR):
+	mkdir $(DOCSDIR)
+
+%.html: %.ipynb
+	# echo $< $@
+	jupyter nbconvert --to html $<
+	mv $@ docs/$@
+
+# docs/%.html: %.html Makefile
+	# mv $< $@
 
 index: docs/index.md docs/book.css
 	pandoc docs/index.md -o docs/index.html -c book.css
