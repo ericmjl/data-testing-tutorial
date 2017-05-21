@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>2-pytest-introduction</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2-pytest-introduction</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11,8 +13,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1107,6 +1109,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2535,6 +2538,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3025,6 +3029,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8755,9 +8760,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8960,14 +8962,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8990,16 +8986,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9136,9 +9122,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9228,9 +9211,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9275,9 +9255,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9574,7 +9551,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9595,6 +9571,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11265,7 +11246,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11577,7 +11558,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11591,9 +11571,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11654,10 +11631,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11668,11 +11643,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11804,7 +11777,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Toy-Example:-increment">Toy Example: increment<a class="anchor-link" href="#Toy-Example:-increment">&#182;</a></h2><p>I will code this live with you.</p>
+<h2 id="Toy-Example:-increment">Toy Example: increment<a class="anchor-link" href="#Toy-Example:-increment">&#182;</a></h2><p>I will code this live with you. Code along with me.</p>
 <ul>
 <li>Create a Python module called <code>datafuncs.py</code>. We will be adding functions to this module as we go along.</li>
 <li>Inside <code>datafuncs.py</code>, write a function name <code>increment(x)</code>, which increments <code>x</code> by 1, and returns the result.</li>
@@ -11872,7 +11845,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is the output you should expect:</p>
 <div class="highlight"><pre><span></span><span class="o">=============================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">==============================</span>
-platform darwin -- Python <span class="m">3</span>.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
+platform darwin -- Python 3.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
 rootdir: /Users/ericmjl/github/tutorials/data-testing-tutorial, inifile:
 collected <span class="m">1</span> items
 
@@ -11882,13 +11855,13 @@ test_datafuncs.py <span class="nv">F</span>
 ________________________________ test_increment ________________________________
 
     def test_increment<span class="o">()</span>:
-&gt;       assert dfn.increment<span class="o">(</span><span class="m">2</span><span class="o">)</span> !<span class="o">=</span> <span class="m">3</span>
-E       assert <span class="m">3</span> !<span class="o">=</span> <span class="m">3</span>
-E        +  where <span class="nv">3</span> <span class="o">=</span> &lt;<span class="k">function</span> increment at 0x10eaf7378&gt;<span class="o">(</span><span class="m">2</span><span class="o">)</span>
+&gt;       assert dfn.increment<span class="o">(</span>2<span class="o">)</span> !<span class="o">=</span> 3
+E       assert <span class="m">3</span> !<span class="o">=</span> 3
+E        +  where <span class="nv">3</span> <span class="o">=</span> &lt;<span class="k">function</span> increment at 0x10eaf7378&gt;<span class="o">(</span>2<span class="o">)</span>
 E        +    where &lt;<span class="k">function</span> increment at 0x10eaf7378&gt; <span class="o">=</span> dfn.increment
 
 test_datafuncs.py:3: <span class="nv">AssertionError</span>
-<span class="o">===========================</span> <span class="m">1</span> failed in <span class="m">0</span>.06 <span class="nv">seconds</span> <span class="o">===========================</span>
+<span class="o">===========================</span> <span class="m">1</span> failed in 0.06 <span class="nv">seconds</span> <span class="o">===========================</span>
 </pre></div>
 
 </div>
@@ -11902,7 +11875,7 @@ test_datafuncs.py:3: <span class="nv">AssertionError</span>
 <p>Let's break down the output for you, to make this simpler.</p>
 <p>Firstly, the header.</p>
 <div class="highlight"><pre><span></span><span class="o">=============================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">==============================</span>
-platform darwin -- Python <span class="m">3</span>.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
+platform darwin -- Python 3.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
 rootdir: /Users/ericmjl/github/tutorials/data-testing-tutorial, inifile:
 collected <span class="m">1</span> items
 
@@ -11927,13 +11900,13 @@ test_datafuncs.py F
 ________________________________ test_increment ________________________________
 
     def test_increment<span class="o">()</span>:
-&gt;       assert dfn.increment<span class="o">(</span><span class="m">2</span><span class="o">)</span> !<span class="o">=</span> <span class="m">3</span>
-E       assert <span class="m">3</span> !<span class="o">=</span> <span class="m">3</span>
-E        +  where <span class="nv">3</span> <span class="o">=</span> &lt;<span class="k">function</span> increment at 0x10eaf7378&gt;<span class="o">(</span><span class="m">2</span><span class="o">)</span>
+&gt;       assert dfn.increment<span class="o">(</span>2<span class="o">)</span> !<span class="o">=</span> 3
+E       assert <span class="m">3</span> !<span class="o">=</span> 3
+E        +  where <span class="nv">3</span> <span class="o">=</span> &lt;<span class="k">function</span> increment at 0x10eaf7378&gt;<span class="o">(</span>2<span class="o">)</span>
 E        +    where &lt;<span class="k">function</span> increment at 0x10eaf7378&gt; <span class="o">=</span> dfn.increment
 
 test_datafuncs.py:3: <span class="nv">AssertionError</span>
-<span class="o">===========================</span> <span class="m">1</span> failed in <span class="m">0</span>.06 <span class="nv">seconds</span> <span class="o">===========================</span>
+<span class="o">===========================</span> <span class="m">1</span> failed in 0.06 <span class="nv">seconds</span> <span class="o">===========================</span>
 </pre></div>
 <ul>
 <li>The function that failed is in the <code>___ test_increment ___</code> header.</li>
@@ -11987,13 +11960,13 @@ test_datafuncs.py:3: <span class="nv">AssertionError</span>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If everything passes, it should look like the following terminal output.</p>
 <div class="highlight"><pre><span></span><span class="o">=============================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">==============================</span>
-platform darwin -- Python <span class="m">3</span>.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
+platform darwin -- Python 3.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
 rootdir: /Users/ericmjl/github/tutorials/data-testing-tutorial, inifile:
 collected <span class="m">1</span> items
 
 test_datafuncs.py .
 
-<span class="o">===========================</span> <span class="m">1</span> passed in <span class="m">0</span>.02 <span class="nv">seconds</span> <span class="o">===========================</span>
+<span class="o">===========================</span> <span class="m">1</span> passed in 0.02 <span class="nv">seconds</span> <span class="o">===========================</span>
 </pre></div>
 
 </div>
@@ -12114,7 +12087,7 @@ test_datafuncs.py .
 
 <span class="sd">    Assumes the data are a numpy array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="fm">__iter__</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">__iter__</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
 </pre></div>
@@ -12272,13 +12245,13 @@ test_datafuncs.py .
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Run-the-test!">Run the test!<a class="anchor-link" href="#Run-the-test!">&#182;</a></h3><div class="highlight"><pre><span></span>$ py.test
 <span class="o">=============================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">==============================</span>
-platform darwin -- Python <span class="m">3</span>.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
+platform darwin -- Python 3.6.1, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
 rootdir: /Users/ericmjl/github/tutorials/data-testing-tutorial, inifile:
 collected <span class="m">3</span> items
 
 test_datafuncs.py ...
 
-<span class="o">===========================</span> <span class="m">3</span> passed in <span class="m">0</span>.03 <span class="nv">seconds</span> <span class="o">===========================</span>
+<span class="o">===========================</span> <span class="m">3</span> passed in 0.03 <span class="nv">seconds</span> <span class="o">===========================</span>
 </pre></div>
 
 </div>
@@ -12300,8 +12273,4 @@ test_datafuncs.py ...
     </div>
   </div>
 </body>
-
- 
-
-
 </html>

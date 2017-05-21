@@ -46,46 +46,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link rel="stylesheet" href="book.css" type="text/css" />
 </head>
 <body>
-<h1 id="data-testing-tutorial">data-testing-tutorial</h1>
-<p>A short tutorial on how to do data testing.</p>
-<h1 id="how-to-use-this-repository">How to use this repository</h1>
-<p>I suggest having the notebooks open <strong>through GitHub inside your browser</strong>. The Jupyter notebooks are mostly a presentation tool; iterative prototyping can be done using the IPython shell or Python interpreter. Almost all of what we will do involves the Terminal and your favourite plain text editor.</p>
-<h1 id="pre-requisite-knowledge">Pre-Requisite Knowledge</h1>
+<h1 id="best-testing-practices-for-data-science">Best Testing Practices for Data Science</h1>
+<p>A short tutorial for data scientists on how to write tests for your code and your data. Before the tutorial, please read through this README file, for it contains a lot of useful information that will help you best prepare for the tutorial.</p>
+<h2 id="how-to-use-this-repository">How to use this repository</h2>
+<p>The tutorial notes are typed up in Jupyter notebooks, and static HTML versions are available under the <a href="./docs/"><code>docs</code></a> folder. For the non-bonus material, I suggest working through the notes in order. With the exception of the Projects, the bonus material can be tackled in any order. During the tutorial, be sure to have the HTML versions open.</p>
+<h2 id="pre-requisite-knowledge">Pre-Requisite Knowledge</h2>
 <p>I am assuming you are of the following type of coder:</p>
 <ul>
 <li>You are a data analytics type, who knows how to read/write CSV files with Pandas, and do basic data manipulation (slicing, indexing rows + columns, using the <code>.apply()</code> function).</li>
 <li>You are not necessarily a seasoned software developer who has experience running tests.</li>
 <li>You are comfortable with operating in the Terminal environment.</li>
-<li>You are comfortable with Python, and know:
-<ul>
-<li>the context manager syntax (<code>with ....</code>),</li>
-<li>assertions (<code>assert conditions1 == condition2</code>),</li>
-<li>file I/O (<code>with open(....) as f:...</code>),</li>
-<li>list/dict/tuple comprehensions (<code>[a for a in container if condition(a)]</code>),</li>
-<li>checking types &amp; attributes (<code>isinstance(obj, type) or hasattr(obj, attr)</code>).</li>
-</ul></li>
 <li>You have some rudimentary knowledge of <code>numpy</code>, particularly the the <code>array.min()</code>, <code>array.max()</code>, <code>array.mean()</code>, <code>array.std()</code>, and <code>numpy.allclose(a1, a2)</code> function calls.</li>
 </ul>
-<h1 id="environment">Environment</h1>
+<p>In order to prepare for the tutorial, there are some pieces of Python syntax that will come in handy to know: - the context manager syntax (<code>with ....</code>), - assertions (<code>assert conditions1 == condition2</code>), - file I/O (<code>with open(....) as f:...</code>), - list/dict/tuple comprehensions (<code>[a for a in container if condition(a)]</code>), - checking types &amp; attributes (<code>isinstance(obj, type) or hasattr(obj, attr)</code>).</p>
+<h2 id="feedback">Feedback</h2>
+<p>If you've taken a version of this tutorial, please leave feedback <a href="https://ericma1.typeform.com/to/Ua0LBs">here</a>. I use the suggestions in there to adjust the tutorial content and make it better. The changes are always released publicly on GitHub, so everybody benefits!</p>
+<h1 id="environment-setup">Environment Setup</h1>
 <h2 id="conda-setup"><code>conda</code> setup</h2>
-<p>I recommend using the <a href="https://www.continuum.io/downloads">Anaconda distribution</a> of Python. This is best supported for Mac OS X and Linux-based systems.</p>
+<p>This installation route should work cross-platform. I recommend using the <a href="https://www.continuum.io/downloads">Anaconda distribution</a> of Python because it is a good way to bootstrap your data science environment.</p>
 <p>To get setup, create a <code>conda</code> environment based on the provided <a href="./environment.yml"><code>environment.yml</code></a> spec file. Run the following commands in your bash terminal.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">bash</span> conda-setup.sh</code></pre></div>
 <h2 id="pip-setup"><code>pip</code> setup</h2>
 <p>The alternative way is to use a virtualenv environment:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">bash</span> venv-setup.sh
 $ <span class="bu">source</span> datatest/bin/activate</code></pre></div>
+<p>Alternatively, you can <code>pip</code> install each of the dependencies listed in the <code>environment.yml</code> file. (The <code>requirements.txt</code> file may be less eagerly maintained than the <code>environment.yml</code> file, given the <code>conda</code>-biases that I have.)</p>
+<h2 id="manual-setup">Manual Setup</h2>
+<p>If you prefer having more control over your installation process, <code>conda</code> or <code>pip</code> install the dependencies listed in the <code>environment.yml</code> file.</p>
 <h2 id="checks">Checks</h2>
 <p>To check whether the environment is correctly setup, run the <code>checkenv.py</code> script:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">python</span> checkenv.py</code></pre></div>
-<p>It should print to your terminal in green text, <code>All packages found; environment checks passed.</code>. Otherwise, <code>conda</code> or <code>pip</code> install the necessary packages stated (they will show up one by one).</p>
+<p>It should print to your terminal, <code>All packages found; environment checks passed.</code>. Otherwise, <code>conda</code> or <code>pip</code> install the necessary packages stated (they will show up one by one).</p>
 <h1 id="authors">Authors</h1>
 <ul>
-<li>Renee Chu</li>
 <li><a href="http://www.ericmjl.com">Eric J. Ma</a></li>
 </ul>
 <h1 id="contributors">Contributors</h1>
+<p>Special thanks goes to individuals who have contributed in ways big and small to the improvement of the material.</p>
 <ul>
+<li>Renee Chu</li>
 <li>Matt Bachmann: <span class="citation">@Bachmann1234</span></li>
 <li>Hugo Bowne-Anderson: <span class="citation">@hugobowne</span></li>
 <li>Boston Python tutorial attendees:
