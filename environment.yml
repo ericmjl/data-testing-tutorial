@@ -1,10 +1,8 @@
 name: datatest  # Data Testing Tutorial
 channels:
-- defaults
 - conda-forge
-- ericmjl
 dependencies:
-- python=3.6
+- python>=3.6
 - jupyter
 - ipykernel
 - jupyterlab
@@ -13,6 +11,8 @@ dependencies:
 - tinydb
 - pyyaml
 - pandas-summary
+- pandera
+- pyjanitor
+- pip
 - pip:
-  - environment_kernels
   - missingno
