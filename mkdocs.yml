@@ -11,7 +11,7 @@ theme:
 
 nav:
   - Home: index.md
-  - "Getting Started": 1-getting-started.ipynb
+  - "Getting Started": 1-getting-setup.ipynb
   - "Prerequisite Knowledge": 2-prerequisite-knowledge.ipynb
   - "Introduction to pytest": 3-pytest-introduction.ipynb
 
