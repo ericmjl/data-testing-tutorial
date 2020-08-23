@@ -27,7 +27,7 @@ before_deploy:
 deploy:
     provider: pages
     skip_cleanup: true
-    github_token: $github_token
+    github_token: $GITHUB_TOKEN
     local_dir: site
     on:
         branch: handbook-redo
