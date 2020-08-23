@@ -18,3 +18,7 @@ dependencies:
 - flake8
 - pip:
   - missingno
+  - mkdocs
+  - mkdocs-material
+  - mknotebooks
+  - pymdown-extensions
