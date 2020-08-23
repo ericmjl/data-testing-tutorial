@@ -10,7 +10,8 @@ theme:
     - tabs
 
 nav:
-  - Welcome: 1-introduction.ipynb
+  - Home: index.md
+  - "Getting Started": 1-introduction.ipynb
   - "Prerequisite Knowledge": 2-prerequisite-knowledge.ipynb
   - "Introduction to pytest": 3-pytest-introduction.ipynb
 
