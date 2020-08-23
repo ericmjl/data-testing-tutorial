@@ -18,6 +18,7 @@ install:
 # Install Python, py.test, and required packages.
 - mamba env create -f environment.yml || conda env create -f environment.yml
 - source activate datatest
+- cd src && pip install -e . && cd ..
 
 script: true
 
