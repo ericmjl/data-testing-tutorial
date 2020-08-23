@@ -6,6 +6,8 @@ dependencies:
 - jupyter
 - ipykernel
 - jupyterlab
+- numpy
+- hypothesis
 - pytest
 - pytest-cov
 - tinydb
