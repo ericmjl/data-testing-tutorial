@@ -14,5 +14,7 @@ dependencies:
 - pandera
 - pyjanitor
 - pip
+- mypy
+- flake8
 - pip:
   - missingno
