@@ -31,18 +31,6 @@ def test_min_max_scaler():
         dfn.min_max_scaler(2)
 
 
-def test_strip_punctuation():
-    text = 'random. stuff; typed, in-to th`is text^line'
-    t = dfn.strip_punctuation(text)
-
-    assert set(t).isdisjoint(string.punctuation)
-
-
-def test_bag_of_words():
-    text = 'random stuff typed into this text line line'
-    assert len(dfn.bag_of_words(text)) == 7
-
-
 @given(st.integers())
 def test_increment_hyp(x):
     assert dfn.increment(x) - 1 == x
@@ -55,8 +43,8 @@ def test_strip_punctuation_hyp(x):
 
 
 def read_metadata(handle):
-    with open(handle, 'r+') as f:
-        metadata_str = ''.join(l for l in f.readlines())
+    with open(handle, "r+") as f:
+        metadata_str = "".join(l for l in f.readlines())
         return yaml.load(metadata_str)
 
 
@@ -66,8 +54,8 @@ def check_schema(df, meta_columns):
 
 
 def test_budget_schemas():
-    columns = read_metadata('data/metadata_budget.yml')['columns']
-    df = pd.read_csv('data/boston_budget.csv')
+    columns = read_metadata("data/metadata_budget.yml")["columns"]
+    df = pd.read_csv("data/boston_budget.csv")
 
     check_schema(df, columns)
 
@@ -76,7 +64,7 @@ def check_data_completeness(df):
 
     df_summary = DataFrameSummary(df).summary()
     for col in df_summary.columns:
-        assert df_summary.loc['missing', col] == 0, f'{col} has missing values'
+        assert df_summary.loc["missing", col] == 0, f"{col} has missing values"
 
 
 def check_data_range(data, lower=0, upper=1):
@@ -85,13 +73,17 @@ def check_data_range(data, lower=0, upper=1):
 
 
 def test_boston_ei():
-    df = pd.read_csv('data/boston_ei.csv')
+    df = pd.read_csv("data/boston_ei.csv")
     check_data_completeness(df)
 
-    zero_one_cols = ['labor_force_part_rate', 'hotel_occup_rate',
-                     'hotel_avg_daily_rate', 'unemp_rate']
+    zero_one_cols = [
+        "labor_force_part_rate",
+        "hotel_occup_rate",
+        "hotel_avg_daily_rate",
+        "unemp_rate",
+    ]
     for col in zero_one_cols:
-        check_data_range(df['labor_force_part_rate'])
+        check_data_range(df["labor_force_part_rate"])
 
 
 def test_standard_scaler():
@@ -114,7 +106,7 @@ def test_eq_roots(a, b, c):
     coefficients = (a, b, c)
     # assumption here can mirror the assertion in
     # the original function definition
-    discriminant = b**2 - 4*a*c
+    discriminant = b ** 2 - 4 * a * c
     assume(discriminant >= 0)
     assume(a > 0)
     r1, r2 = dfn.eq_roots(coefficients)
@@ -122,20 +114,20 @@ def test_eq_roots(a, b, c):
 
 
 def test_divvy_corrupt():
-    hash_true = dfn.hash_data('data/Divvy_Stations_2013.csv')
-    hash_corr = dfn.hash_data('data/Divvy_Stations_2013_corrupt.csv')
+    hash_true = dfn.hash_data("data/Divvy_Stations_2013.csv")
+    hash_corr = dfn.hash_data("data/Divvy_Stations_2013_corrupt.csv")
 
     for i in range(len(hash_true)):
-        true = hash_true.loc[i, 'hash']
-        corr = hash_corr.loc[i, 'hash']
+        true = hash_true.loc[i, "hash"]
+        corr = hash_corr.loc[i, "hash"]
 
         assert true == corr, print(f"Row {i} has a problem.")
 
 
 def test_divvy_filehash():
-    db = TinyDB('data_integrity/hashes.db')
-    filename = f'data/Divvy_Stations_2013.csv'
+    db = TinyDB("data_integrity/hashes.db")
+    filename = f"data/Divvy_Stations_2013.csv"
     filehash = dfn.hash_file(filename)
     Rec = Query()
     latest_record = db.search(Rec.filename == filename)[-1]
-    assert latest_record['hash'] == filehash
+    assert latest_record["hash"] == filehash
