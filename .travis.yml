@@ -30,8 +30,9 @@ deploy:
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
     local_dir: site
+    keep_history: false
     on:
         branch: handbook-redo
 
 notifications:
-    email: true
+    email: false
