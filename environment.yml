@@ -2,7 +2,7 @@ name: datatest  # Data Testing Tutorial
 channels:
 - conda-forge
 dependencies:
-- python>=3.6
+- python>=3.8
 - jupyter
 - ipykernel
 - jupyterlab
