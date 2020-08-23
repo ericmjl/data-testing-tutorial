@@ -1,0 +1,1059 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.8">
+    
+    
+      
+        <title>Introduction to pytest - Software Testing and Data Validation for Data Scientists</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.01afc2df.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.83bccb1f.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#02a6f2">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.2/dist/mermaid.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-pytest" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Software Testing and Data Validation for Data Scientists" class="md-header-nav__button md-logo" aria-label="Software Testing and Data Validation for Data Scientists">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Software Testing and Data Validation for Data Scientists
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Introduction to pytest
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/ericmjl/data-testing-tutorial/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ericmjl/data-testing-tutorial
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Software Testing and Data Validation for Data Scientists" class="md-nav__button md-logo" aria-label="Software Testing and Data Validation for Data Scientists">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Software Testing and Data Validation for Data Scientists
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ericmjl/data-testing-tutorial/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ericmjl/data-testing-tutorial
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1-getting-setup/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2-prerequisite-knowledge/" title="Prerequisite Knowledge" class="md-nav__link">
+      Prerequisite Knowledge
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Introduction to pytest
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Introduction to pytest" class="md-nav__link md-nav__link--active">
+      Introduction to pytest
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-pytest" class="md-nav__link">
+    Introduction to pytest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing-fundamentals" class="md-nav__link">
+    Unit testing fundamentals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytest-idioms" class="md-nav__link">
+    pytest idioms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises-in-testing" class="md-nav__link">
+    Exercises in Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises in Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-write-a-test-for-the-increment-function" class="md-nav__link">
+    Exercise 1: Write a test for the increment function.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-simulating-what-happens-when-you-accidentally-break-code" class="md-nav__link">
+    Exercise 2: Simulating what happens when you accidentally break code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-notes" class="md-nav__link">
+    Some notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Some notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-of-a-test" class="md-nav__link">
+    Anatomy of a Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-loop" class="md-nav__link">
+    Testing Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-kinds-of-tests" class="md-nav__link">
+    What kinds of tests
+  </a>
+  
+    <nav class="md-nav" aria-label="What kinds of tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-tests" class="md-nav__link">
+    Execution tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-based-tests" class="md-nav__link">
+    Example-based tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametrized-tests" class="md-nav__link">
+    Parametrized tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-based-tests" class="md-nav__link">
+    Property-based tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-testing-a-min-max-scaler" class="md-nav__link">
+    Exercise 3: Testing a Min-Max Scaler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-testing-functions-on-textual-data" class="md-nav__link">
+    Exercise 4: Testing functions on textual data.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-pytest" class="md-nav__link">
+    Introduction to pytest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing-fundamentals" class="md-nav__link">
+    Unit testing fundamentals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytest-idioms" class="md-nav__link">
+    pytest idioms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises-in-testing" class="md-nav__link">
+    Exercises in Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises in Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-write-a-test-for-the-increment-function" class="md-nav__link">
+    Exercise 1: Write a test for the increment function.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-simulating-what-happens-when-you-accidentally-break-code" class="md-nav__link">
+    Exercise 2: Simulating what happens when you accidentally break code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-notes" class="md-nav__link">
+    Some notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Some notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-of-a-test" class="md-nav__link">
+    Anatomy of a Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-loop" class="md-nav__link">
+    Testing Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-kinds-of-tests" class="md-nav__link">
+    What kinds of tests
+  </a>
+  
+    <nav class="md-nav" aria-label="What kinds of tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-tests" class="md-nav__link">
+    Execution tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-based-tests" class="md-nav__link">
+    Example-based tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametrized-tests" class="md-nav__link">
+    Parametrized tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-based-tests" class="md-nav__link">
+    Property-based tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-testing-a-min-max-scaler" class="md-nav__link">
+    Exercise 3: Testing a Min-Max Scaler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-testing-functions-on-textual-data" class="md-nav__link">
+    Exercise 4: Testing functions on textual data.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    Conclusions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ericmjl/data-testing-tutorial/edit/master/docs/3-pytest-introduction.ipynb" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Introduction to pytest</h1>
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="introduction-to-pytest">Introduction to <code>pytest</code></h2>
+<p>In this chapter, we are going to introduce you to <code>pytest</code>,
+a library for unit testing your code in Python.</p>
+<blockquote>
+<p>The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.
+</div>
+</div></p>
+</blockquote>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="unit-testing-fundamentals">Unit testing fundamentals</h2>
+<p>If this is your first time learning about unit testing,
+read on this section for a crash course on what it's all about.
+(If you're familiar with unit testing,
+but want to know more about <code>pytest</code>'s idioms, move on to the next section.)</p>
+<p>From <a href="https://en.wikipedia.org/wiki/Unit_testing">Wikipedia</a>:</p>
+<blockquote>
+<p>unit testing is a software testing method by which individual units of source code—sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures—are tested to determine whether they are fit for use.</p>
+</blockquote>
+<p>If that sounded confusing, fret not: here's a colloquial version that might help you:</p>
+<blockquote>
+<p>Unit testing is a software testing method where we test logical "units" of source code, in isolation from other "units" of source code, to make sure they work as expected.</p>
+</blockquote>
+<p>For the astute amongst you, there's a key skill involved in unit testing: that is learning how to break a problem down into logical "units" of work. This is an art, is problem-dependent, and developing a shared taste with others takes practice and time; learning how to write unit tests will accelerate your development on this matter.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="pytest-idioms"><code>pytest</code> idioms</h2>
+<p>Before I get you writing code, it's important to make sure that you know some of <code>pytest</code>'s idioms. </p>
+<p>Firstly, <code>pytest</code> expects that the block of code that you want to test is wrapped inside a function or a class. That way, you can import it into your testing suite (more on what the "testing suite" is later!). In other words, you should have a function defined in an importable module, and that module should be installed in the conda environment. (And if even this paragraph feels awkward to you, I'd recommend reading the "Prerequisite Knowledge" chapter again.)</p>
+<p>Secondly, <code>pytest</code> looks for all files that are prefixed with <code>test_</code> (for example, <code>test_something.py</code>), and then looks for all functions in those files that are also prefixed with <code>test_</code> (for example <code>def test_somefunc()</code>). Those will then comprise the "test suite" for your project.</p>
+<p>Thirdly, <code>pytest</code> is invoked at the command line. A single basic command, with no configuration flags, looks like this:</p>
+<div class="highlight"><pre><span></span><code>pytest .
+</code></pre></div>
+
+<p>This tells <code>pytest</code> to look recursively under the current working directory for all tests to execute, and then it will execute them in order.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="exercises-in-testing">Exercises in Testing</h2>
+<p>With that background information out of the way, I'm going to give you a few exercises to get your hands wet with testing.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h3 id="exercise-1-write-a-test-for-the-increment-function">Exercise 1: Write a test for the <code>increment</code> function.</h3>
+<p>We have provided a function inside this tutorial's custom source, under <code>testing_tutorial.functions</code>, called <code>increment</code>.</p>
+<p>The source code for the function is below:
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">testing_tutorial.functions</span> <span class="kn">import</span> <span class="n">increment</span> 
+
+<span class="n">increment</span><span class="err">??</span>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+We're going to use this function to show you the anatomy of writing a test.</p>
+<p>Firstly, we define a new function that informatively identifies it as a test for increment:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_increment</span><span class="p">():</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Now, we can fill it up with the "setup" for the test, i.e. the inputs that go into the function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_increment</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># one example, &quot;set up&quot; to be passed into the test.</span>
+</code></pre></div>
+
+<p>Then, we execute the function to be tested using the setup inputs:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_increment</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                  <span class="c1"># setup to be passed into the test.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">increment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># execute the function</span>
+</code></pre></div>
+
+<p>Finally, we <em>assert</em> that the result matches some expectation:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_increment</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                  <span class="c1"># setup to be passed into the test.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">increment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># execute the function and get result.</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">2</span>     <span class="c1"># assert equality of result with expectation.</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell border-box-sizing text_cell rendered&quot;</span> <span class="n">markdown</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;inner_cell&quot;</span> <span class="n">markdown</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;text_cell_render border-box-sizing rendered_html&quot;</span> <span class="n">markdown</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
+<span class="n">Now</span><span class="p">,</span> <span class="n">I</span><span class="s1">&#39;d like you to write a more general version of this test, and place it inside `./src/testing_tutorial/tests/test_functions_student.py`. Don&#39;</span><span class="n">t</span> <span class="k">break</span> <span class="n">your</span> <span class="n">skull</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">come</span> <span class="n">up</span> <span class="k">with</span> <span class="n">a</span> <span class="n">mathematically</span> <span class="n">rigorous</span> <span class="n">version</span><span class="p">,</span> <span class="n">though</span><span class="o">.</span> <span class="n">The</span> <span class="n">intent</span> <span class="n">here</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">you</span><span class="s1">&#39;re actually thinking about some form of testing, and not just copy/pasting code.</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;cell border-box-sizing text_cell rendered&quot;</span> <span class="n">markdown</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;inner_cell&quot;</span> <span class="n">markdown</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;text_cell_render border-box-sizing rendered_html&quot;</span> <span class="n">markdown</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
+<span class="n">Now</span><span class="p">,</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">terminal</span><span class="p">,</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span> <span class="n">command</span><span class="p">:</span>
+
+<span class="err">```</span><span class="n">bash</span>
+<span class="err">$</span> <span class="n">pytest</span>
+</code></pre></div>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+This is the output you should expect:</p>
+<p><div class="highlight"><pre><span></span><code>$ <span class="nv">pytest</span>
+<span class="o">=================================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">=================================</span>
+platform darwin -- Python <span class="m">3</span>.6.10, pytest-6.0.1, py-1.9.0, pluggy-0.13.1
+rootdir: /Users/ericmjl/github/tutorials/data-testing-tutorial/src
+plugins: cov-2.10.1
+collected <span class="m">2</span> items                                                                     
+
+tests/test_functions.py ..                                                      <span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+
+<span class="o">==================================</span> <span class="m">2</span> passed in <span class="m">0</span>.04s <span class="o">==================================</span>
+</code></pre></div>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+This tells you that:</p>
+<ul>
+<li>The <code>collected 2 items</code> indicates how many test functions were written.</li>
+<li>The bottom line contains <code>tests/test_functions.py</code>, and is the place where the tests showed up. (These are the instructor versions, yours should show up under <code>tests/test_functions_student.py</code>)</li>
+<li>The <code>..</code> shows that the tests passed! (If they failed, they would show up with red <code>X</code>s.)
+</div>
+</div></li>
+</ul>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Congratulations! You have written the first test of the tutorial!
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h3 id="exercise-2-simulating-what-happens-when-you-accidentally-break-code">Exercise 2: Simulating what happens when you accidentally break code</h3>
+<p>We're now going to simulate what happens when you accidentally break your code. Go ahead and change the <code>increment</code> function in <code>functions.py</code> such that it returns the wrong thing.</p>
+<p>Then, execute the test suite! </p>
+<p>You should see something that looks like the following:
+<div class="highlight"><pre><span></span><code>================================= test session starts =================================
+platform darwin -- Python 3.6.10, pytest-6.0.1, py-1.9.0, pluggy-0.13.1
+rootdir: /Users/ericmjl/github/tutorials/data-testing-tutorial/src
+plugins: cov-2.10.1
+collected 2 items                                                                     
+
+tests/test_functions.py FF                                                      [100%]
+
+====================================== FAILURES =======================================
+___________________________________ test_increment ____________________________________
+
+    def test_increment():
+        &quot;&quot;&quot;Test for increment function.&quot;&quot;&quot;
+        x = 1
+        result = increment(x)
+&gt;       assert result == 2
+E       assert 3 == 2
+
+tests/test_functions.py:8: AssertionError
+_______________________________ test_increment_general ________________________________
+
+    def test_increment_general():
+        &quot;&quot;&quot;A slightly more test for increment function.&quot;&quot;&quot;
+        x = 1
+        result = increment(x)
+&gt;       assert result - 1 == x
+E       assert (3 - 1) == 1
+
+tests/test_functions.py:15: AssertionError
+=============================== short test summary info ===============================
+FAILED tests/test_functions.py::test_increment - assert 3 == 2
+FAILED tests/test_functions.py::test_increment_general - assert (3 - 1) == 1
+================================== 2 failed in 0.27s ==================================
+</code></pre></div>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+Now, we'll see the tests fail, and the error messages will show us what's wrong!</p>
+<p>Reading the test error message immediately tells us that the function that failed the test was <code>increment</code>. In particular, it failed both the example-based test and the slightly more general test. When we execute the test, we've caught where breaking changes happen, because the tests serve as an independent check on the correctness of the function.</p>
+<p>Go ahead and fix the test, then re-run the test suite. Everything should now pass.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="some-notes">Some notes</h2>
+<p>This is a very good just-in-time moment to emphasize a few points points.</p>
+<h3 id="anatomy-of-a-test">Anatomy of a Test</h3>
+<p>Firstly, let's revise now what the anatomy of a test is like.</p>
+<p>You will always have a setup, a result from the execution of the function, and an assertion about the result. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">function</span>
+
+<span class="k">def</span> <span class="nf">test_function</span><span class="p">():</span>  <span class="c1"># `test_` in the name is very important!</span>
+    <span class="sd">&quot;&quot;&quot;Docstring about the test.&quot;&quot;&quot;</span>
+    <span class="n">setup_value</span> <span class="o">=</span> <span class="o">...</span>               <span class="c1"># set up the test</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">setup_value</span><span class="p">)</span>  <span class="c1"># execution of the function</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="n">correct_val</span>    <span class="c1"># assertion statement</span>
+</code></pre></div>
+
+<p>The function should do something that is "testable", and ideally, it should run fast (like under a few hundred milliseconds). After all, if you start accumulating a bunch of functions and need to test them, then you'll end up waiting a long time for all of your tests to run.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h3 id="testing-loop">Testing Loop</h3>
+<p>The other thing to introduce just-in-time here is the so-called "testing loop":</p>
+<ol>
+<li>Write a test for a function.</li>
+<li>Write the function.</li>
+<li>Execute <code>pytest</code>.</li>
+<li>Go back to step 1.</li>
+</ol>
+<p>There's nothing complex behind the ideas of testing, 80% of your cases will boil down to doing this loop.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h3 id="what-kinds-of-tests">What kinds of tests</h3>
+<p>There are a few kinds of tests that you can write, and I'll list here the "bare minimum".</p>
+<h4 id="execution-tests">Execution tests</h4>
+<p>If you don't do anything else, then simply executing the test and making sure it runs without erroring is better than nothing. (Basically, just eliminate the assertions.)</p>
+<p>I don't recommend doing this for everything, but if you're genuinely at a loss, then call the function inside the test and just make sure it doesn't error out.</p>
+<h4 id="example-based-tests">Example-based tests</h4>
+<p>I did this in <code>test_increment</code>, where I provided one example input in the test, and tested that the expected result was some exact value. This is already one level up from a simple execution test.</p>
+<h4 id="parametrized-tests">Parametrized tests</h4>
+<p>You can read more about parametrizing a test on the <a href="https://docs.pytest.org/en/stable/parametrize.html"><code>pytest</code> docs</a>. Here, we parametrize the test function, so that pytest can provide to it a range of examples that we have pre-defined.</p>
+<h4 id="property-based-tests">Property-based tests</h4>
+<p>If you read <code>test_increment_general</code>, that is an example of a property-based test. There, we test a property of the output that is <em>invariant</em> to the input given, i.e. that the output should always be one more than the input, regardless of what input is given. In the later chapters, you will see how to do this with Hypothesis.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h3 id="exercise-3-testing-a-min-max-scaler">Exercise 3: Testing a Min-Max Scaler</h3>
+<p>In <code>functions.py</code>, we have a function called <code>min_max_scaler(x)</code> for your data. It takes in a <code>numpy</code> array and scales all of the values to be between 0 and 1 inclusive. The min value should be 0, and the max value should be 1.</p>
+<p>Try writing a test for the min-max scaler. It should check the following:</p>
+<ul>
+<li>Given a particular array-like input (e.g. numpy array, list, tuples), it should be equal to some other array. Use the <code>np.allclose(arr1, arr2)</code> function to test closeness of two floating point values.</li>
+<li>The minimum value should be 0, and the maximum value of the output should be 1.</li>
+</ul>
+<p><strong>Note:</strong> This function is also implemented in the <code>scikit-learn</code> library as part of their <code>preprocessing</code> module. However, in case an engineering decision that you make is that you don't want to import an entire library just to use one function, it is considered good practice to rewrite it on your own, provided you also test it sufficiently.</p>
+<p>Once you're done, execute the test and check that the <code>min_max_scaler</code> adheres to the behaviour laid out in its docstring.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h3 id="exercise-4-testing-functions-on-textual-data">Exercise 4: Testing functions on textual data.</h3>
+<p>Imagine we have textual data, and we want to clean it up. There are two functions we may want to write to standardize the data:</p>
+<ul>
+<li><code>bag_of_words(text)</code>, which takes in the text and tokenizes the text into its set of constituent words.</li>
+<li><code>strip_punctuation(text)</code>, which strips punctuation from the text.</li>
+</ul>
+<p>Now, I'd like you to invert the flow we've been following, and start by designing the tests first, <em>before</em> implementing the two functions in <code>src/student_functions.py</code>; you may wish to write additional helper functions to manage the business logic. There's leeway in this exercise; feel free to get creative! (And if you want a reference starting point, feel free to peek inside <code>src/functions.py</code>!)</p>
+<p>The reason I'm asking you to design the tests first is because that will clarify how you intend to use the function, which will bring much more clarity to how you implement the function. This is also known as "Test-Driven Development".</p>
+<p>Once you're done, execute the tests and make sure they all pass.
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="conclusions">Conclusions</h2>
+<p>This level of testing is sufficient to get you through 80% of the day-to-day. I have used this level of testing at work to raise the level of confidence I have in the functions I write. It facilitates code sharing as well, because my colleagues can now have the confidence that the code I write is reliable and works as expected. My engineering colleagues will have confidence in taking over what I have developed, because they know they have an easy starting point for studying the code (in the test suite).</p>
+<p>There are advanced patterns for testing that I have not gone through here, such as parametrizing the tests, checking that errors are raised, and more. For these, the <code>pytest</code> docs are a wonderful resource, and I would encourage you to check them out.</p>
+<p>Meanwhile, we are going to go to the next chapter, which is on how writing tests for our data.
+</div>
+</div></p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../2-prerequisite-knowledge/" title="Prerequisite Knowledge" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Prerequisite Knowledge
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="http://www.shortwhale.com/ericmjl" target="_blank" rel="noopener" title="www.shortwhale.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 8l-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/ericmjl" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/ericmjl" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://linkedin.com/in/ericmjl" target="_blank" rel="noopener" title="linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.df0def68.min.js"></script>
+      <script src="../assets/javascripts/bundle.ba57d267.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
