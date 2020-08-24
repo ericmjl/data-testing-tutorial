@@ -14,6 +14,7 @@ nav:
   - "Getting Started": 1-getting-setup.ipynb
   - "Prerequisite Knowledge": 2-prerequisite-knowledge.ipynb
   - "Introduction to pytest": 3-pytest-introduction.ipynb
+  - "Dataframe validation": 4-data-checks.ipynb
 
 plugins:
   - search:
